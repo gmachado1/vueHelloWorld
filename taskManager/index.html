@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Task Manager</title>
+    <style>
+        .taskDone {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="taskManager">
+        <h1>Task Control</h1>
+        <h2>Add tasks</h2>
+        <form v-on:submit="addTask">
+            <input type="text" v-model="newTask.title" placeholder="Task title" />
+            <input type="submit" value="Add" />
+        </form>
+        <hr>
+        <h2>Task to do.</h2>
+        <table>
+            <thead>
+                <th>Done?</th>
+                <th>Title</th>
+                <th>Remove</th>
+            </thead>
+            <tbody>
+                <tr v-for="task in tasks">
+                    <td><input type="checkbox" v-model="task.done"/></td>
+                    <td><span v-bind:class="{taskDone:task.done}">{{task.title}}</span></td>
+                    <td><button v-on:click="removeTask(task)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var taskManager = new Vue({
+            el: "#taskManager",
+            data: {
+                tasks: [
+                    { title: "Develop an API.", ready: false },
+                    { title: "Build a control access.", ready: false },
+                    { title: "Send new changes to the server", ready: false },
+                    { title: "Test published changes.", ready: false }
+                ],
+                newTask: {
+                    title: "", ready: false
+                }
+            },
+            methods: {
+                addTask: function (e) {
+                    var title2Add = this.newTask;
+                    e.preventDefault();
+                    this.tasks.push(title2Add);
+                },
+                removeTask: function (task) {
+                    this.tasks.splice(this.tasks.indexOf(task), 1)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
