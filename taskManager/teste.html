@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  <title>teste</title>
+  <meta charset="UTF-8" />
+  <input type="text" id="funcionario" placeholder="Informe um funcionário" />
+  <select class="custom-select mr-sm-2" id="mes">
+    <option value="0" selected>Selcione...</option>
+    <option value="Janeiro">Janeiro</option>
+    <option value="Fevereiro">Fevereiro</option>
+    <option value="Março">Março</option>
+    <option value="Abril">Abril</option>
+    <option value="Maio">Maio</option>
+    <option value="Junho">Junho</option>
+    <option value="Julho">Julho</option>
+    <option value="Agosto">Agosto</option>
+    <option value="Setembro">Setembro</option>
+    <option value="Outubro">Outubro</option>
+    <option value="Novembro">Novembro</option>
+    <option value="Dezembro">Dezembro</option>
+  </select>
+  <button class="js-add btn btn-default" type="button">Adicionar</button>
+
+  <script>
+    $(document).ready(function () {
+      var count = 1;
+      //   $(function () {
+      var func = [
+        1, "Gustavo",
+        2, "Marcos",
+        3, "Pedro",
+        4, "Rafael"
+      ];
+
+      $("#funcionario").autocomplete({
+        source: func
+      });
+      //   });
+      function onAdd() {
+        
+        var nome = $('#funcionario').val(); //document.getElementById("funcionario").value;
+        var mes = $('#mes').val();
+        if (nome.length == 0) {
+          console.log("Nome not defined.");
+          alert('Preencha um nome.');
+        } else
+          if (mes == "0") {
+            console.log("Mês not defined.");
+            alert('Preencha um mês.');
+          } else {
+            $('#ulResultado').append("<li class='"+count+"'>"+ nome + " - " + mes + "<a href='javascript:remove("+ count++ +")'>  <img border='0' alt='remover' src='C:/Users/User/Pictures/remove2.png'/></a></li>" );
+            $('#funcionario').val("");
+            $('#mes').val("0");
+          }
+      }
+
+
+
+      $('.js-add').click(onAdd);
+    });
+    function remove(elementId) {
+      //var element = document.getElementById(elementId);
+      var element = $('.'+elementId);
+      if (element) {
+        element.remove();
+      }
+    }
+
+  </script>
+
+<body>
+  <div>
+  </div>
+  <div id="divResultado">
+      <ul id="ulResultado">
+      </ul>
+  </div>
+</body>
+
+</html>

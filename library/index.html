@@ -3,45 +3,19 @@
     <head>
         <meta charset="utf-8">
         <title>Book list</title>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/index.css" />
     </head>
 
     <body>
-        <div class="container">
-            <h2>My book list</h2>
-            <div class="input-group">
-                <input placeholder="Add Book" type="text" class="js-new-book form-control"><br>
-                <input placeholder="Author Name" type="text" class="js-new-author form-control"> <br>
-                <button @click="addItem" class="js-add btn btn-primary btn-block" type="button">Add</button>
-            </div>
-            <ul>
-                <li>
-                    <div class="checkbox">
-                        <label>
-                            <input class="js-book" name="list" type="checkbox" />
-                            <big>Alice in Wonderland</big> - <small>Lewis  Carrol</small>
-                        </label>
-                    </div>
-                </li>
-                <li>
-                    <div class="checkbox">
-                        <label>
-                            <input class="js-book" name="list" type="checkbox">
-                            <big>The Book Thief</big> - <small>Markus Zusak</small>
-                        </label>
-                    </div>
-                </li>
-                <li class="removed">
-                    <div class="checkbox">
-                        <label>
-                            <input class="js-book" name="list" type="checkbox" checked>
-                            <big>Lord of the rings - 2 towers</big> - <small> J. R. R. Tolkien</small>
-                        </label>
-                    </div>
-                </li>
-            </ul>
-        </div>
+            <div id="app" class="container">
+                    <h2>{{title}}</h2>
+                    <ul>
+                        <li>{{books[0]}}</li>
+                        <li>{{books[1]}}</li>
+                    </ul>
+                 </div>
     </body>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
    <script type="text/javascript" src="js/index.js"></script>
